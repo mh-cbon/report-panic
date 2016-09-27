@@ -1,7 +1,6 @@
 prebump: git fetch --tags
 preversion: \
 philea "go vet %s" "go fmt %s" \
-&& go run demo/demo.go -v \
 && 666 changelog finalize --version !newversion! \
 && 666 commit -q -m "changelog: !newversion!" -f change.log
 postversion: \
