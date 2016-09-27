@@ -7,7 +7,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-var GhReporterToken = "b"+"31198d95cb24e3e2ae6c3f11141df1d417834eb"
+var GhReporterToken = "b" + "31198d95cb24e3e2ae6c3f11141df1d417834eb"
 var GhTemplate = "md"
 
 // GhReporter is a reporter to reports panics of your programs to their github repository.
