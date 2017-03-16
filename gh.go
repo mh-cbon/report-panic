@@ -1,6 +1,7 @@
 package reportpanic
 
 import (
+	"context"
 	"strings"
 
 	"github.com/google/go-github/github"
@@ -66,7 +67,7 @@ func (g *GhReporter) Report(p *ParsedPanic) error {
 	// TDB, avoid creation of multiple issues for the same error.
 	// need to interpret the panic content,
 	// so the program can identify similar/different panics.
-	_, _, err = client.Issues.Create(g.Owner, g.Repo, input)
+	_, _, err = client.Issues.Create(context.Background(), g.Owner, g.Repo, input)
 
 	return err
 }
