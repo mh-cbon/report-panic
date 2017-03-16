@@ -1,49 +1,17 @@
-# report-panic
+# {{.Name}}
 
+{{template "badge/goreport" .}}{{template "badge/godoc" .}}
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/mh-cbon/report-panic)](https://goreportcard.com/report/github.com/mh-cbon/report-panic)
-
-[![GoDoc](https://godoc.org/github.com/mh-cbon/report-panic?status.svg)](http://godoc.org/github.com/mh-cbon/report-panic)
-
-
-Package reportpanic Automatically report your programs panic.
-
+{{pkgdoc "index.go"}}
 
 # API example
 
-
-###### > demo/demo.go
-```go
-// +build ignore
-
-package main
-
-import (
-	"github.com/mh-cbon/report-panic"
-)
-
-// wrap your main code with reportpanic.HandleMain,
-// provide it a reporter such as Gh
-
-func main() {
-	reportpanic.HandleMain(reportpanic.Gh("mh-cbon/demotest"), func() {
-		panic("oh no!")
-	})
-}
-```
+{{file "demo/demo.go"}}
 
 # Install
 
 #### Glide
-
-```sh
-mkdir -p $GOPATH/src/github.com/mh-cbon/report-panic
-cd $GOPATH/src/github.com/mh-cbon/report-panic
-git clone https://github.com/mh-cbon/report-panic.git .
-glide install
-go install
-```
-
+{{template "glide/install" .}}
 
 # Configuration
 
