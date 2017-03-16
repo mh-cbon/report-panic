@@ -16,7 +16,7 @@ type StdTemplateResolver struct {
 	Template  string
 }
 
-// Construct a default StdTemplateResolver.
+// NewStdTemplateResolver is a ctor.
 func NewStdTemplateResolver(tpl string) *StdTemplateResolver {
 	return &StdTemplateResolver{
 		Template: tpl,
@@ -42,8 +42,8 @@ func (c *StdTemplateResolver) Make(p *ParsedPanic) (string, error) {
 	return b.String(), err
 }
 
-// Known templates to build the body report.
-var PanicReportTemplates map[string]string = map[string]string{
+// PanicReportTemplates contains templates to build the body report.
+var PanicReportTemplates = map[string]string{
 	"md": `
   __Go__: {{.GoVersion}}
 

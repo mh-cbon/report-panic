@@ -4,11 +4,13 @@ import (
 	"strings"
 )
 
+// ParsedPanic is the result of the parsing of a panic output.
 type ParsedPanic struct {
 	Reason  string
 	Content string
 }
 
+// ParsePanic parses a panic output
 func ParsePanic(panicContent string) *ParsedPanic {
 	reason := ""
 	prefix := "panic: "

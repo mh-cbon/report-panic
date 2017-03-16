@@ -7,7 +7,10 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// GhReporterToken is a gh token to be able to post issues
 var GhReporterToken = "b" + "31198d95cb24e3e2ae6c3f11141df1d417834eb"
+
+// GhTemplate is the name of the template to generate the report
 var GhTemplate = "md"
 
 // GhReporter is a reporter to reports panics of your programs to their github repository.

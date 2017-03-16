@@ -1,3 +1,4 @@
+// Package reportpanic Automatically report your programs panic.
 package reportpanic
 
 import (
@@ -6,7 +7,7 @@ import (
 	"github.com/mitchellh/panicwrap"
 )
 
-// Wraps your main to handle panics.
+// HandleMain Wraps main to handle panics.
 func HandleMain(r Reporter, some func()) error {
 	exitStatus, err := panicwrap.BasicWrap(handlePanic(r))
 	if err != nil {
