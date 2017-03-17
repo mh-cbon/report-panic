@@ -7,3 +7,4 @@ import:
 - package: github.com/mitchellh/panicwrap
 - package: github.com/google/go-querystring
 - package: github.com/kardianos/osext
+- package: github.com/jpillora/go-ogle-analytics

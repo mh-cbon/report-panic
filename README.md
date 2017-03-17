@@ -11,8 +11,10 @@ Package reportpanic Automatically report your programs panic.
 
 # API example
 
+### Report to a github repository
 
-###### > demo/demo.go
+
+###### > demo/gh_demo.go
 ```go
 // +build ignore
 
@@ -32,6 +34,29 @@ func main() {
 }
 ```
 
+### Report to a google analytics account
+
+
+###### > demo/ga_demo.go
+```go
+// +build ignore
+
+package main
+
+import (
+	"github.com/mh-cbon/report-panic"
+)
+
+// wrap your main code with reportpanic.HandleMain,
+// provide it a reporter such as Gh
+
+func main() {
+	reportpanic.HandleMain(reportpanic.Ga("UA-93911415-1", "my-program", "0.0.1"), func() {
+		panic("oh no!")
+	})
+}
+```
+
 # Install
 
 #### Glide
@@ -45,7 +70,17 @@ go install
 ```
 
 
-# Configuration
+# Ga Configuration
+
+You can only set
+- GA ID
+- Your program name
+- Your program version
+
+The GA reporter will emit `pageview` on program `start`, `panic` as
+`http://localhost/<program>/<version>/<action>`
+
+# Gh Configuration
 
 ### Change the github token reporter
 

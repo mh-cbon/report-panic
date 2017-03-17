@@ -1,38 +1,42 @@
-hash: 740cabb963547e99d3c2fd680bf0d408b7fdfdf720ac78c4c184999c2edfd091
-updated: 2016-09-27T14:47:24.119599209+02:00
+hash: 9e368647add489b5ad843f9efe36ffeb8b2fea09d202defb84027b34287ceac2
+updated: 2017-03-16T23:40:35.076247497+01:00
 imports:
 - name: github.com/golang/protobuf
-  version: 87c000235d3d852c1628dc9490cd21ab36a7d69f
+  version: c9c7427a2a70d2eb3bafa0ab2dc163e45f143317
   subpackages:
   - proto
 - name: github.com/google/go-github
-  version: 94a3cd9f531888fe4a03487276c0adb887428e77
+  version: 8fbcb062b5776325e3f65ec2d44211d310370da6
   subpackages:
   - github
 - name: github.com/google/go-querystring
-  version: 9235644dd9e52eeae6fa48efd539fdc351a0af53
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
   subpackages:
   - query
+- name: github.com/jpillora/go-ogle-analytics
+  version: 14b04e0594ef6a9fd943363b135656f0ec8c9d0e
 - name: github.com/kardianos/osext
-  version: c2c54e542fb797ad986b31721e1baedf214ca413
+  version: 9d302b58e975387d0b4d9be876622c86cefe64be
 - name: github.com/mitchellh/panicwrap
-  version: a1e50bc201f387747a45ffff020f1af2d8759e88
+  version: fce601fe55579125e1b3cb0b992287e7290f7b83
 - name: golang.org/x/net
-  version: f09c4662a0bd6bd8943ac7b4931e185df9471da4
+  version: a6577fac2d73be281a500b310739095313165611
   subpackages:
   - context
 - name: golang.org/x/oauth2
-  version: 3c3a985cb79f52a3190fbc056984415ca6763d01
+  version: 30fcca6531eb4bb278493c9fb299295b3b145934
   subpackages:
   - internal
 - name: google.golang.org/appengine
-  version: 8d4efd07a9358ec8c7e75b29387c31a7692db8d2
+  version: b79c28f0197795b4050bfcd7c4c2209136c594b1
   subpackages:
-  - urlfetch
   - internal
-  - internal/urlfetch
+  - internal/app_identity
   - internal/base
   - internal/datastore
   - internal/log
+  - internal/modules
   - internal/remote_api
+  - internal/urlfetch
+  - urlfetch
 testImports: []

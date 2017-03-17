@@ -6,14 +6,30 @@
 
 # API example
 
-{{file "demo/demo.go"}}
+### Report to a github repository
+
+{{file "demo/gh_demo.go"}}
+
+### Report to a google analytics account
+
+{{file "demo/ga_demo.go"}}
 
 # Install
 
 #### Glide
 {{template "glide/install" .}}
 
-# Configuration
+# Ga Configuration
+
+You can only set
+- GA ID
+- Your program name
+- Your program version
+
+The GA reporter will emit `pageview` on program `start`, `panic` as
+`http://localhost/<program>/<version>/<action>`
+
+# Gh Configuration
 
 ### Change the github token reporter
 
