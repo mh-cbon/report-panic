@@ -1,6 +1,7 @@
 package reportpanic
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -8,6 +9,11 @@ import (
 type ParsedPanic struct {
 	Reason  string
 	Content string
+}
+
+// String returns a string representation
+func (p ParsedPanic) String() string {
+	return fmt.Sprintf("%v\n%v", p.Reason, p.Content)
 }
 
 // ParsePanic parses a panic output
