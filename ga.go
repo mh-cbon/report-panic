@@ -2,6 +2,8 @@ package reportpanic
 
 import (
 	"fmt"
+	"os"
+	"strings"
 
 	"github.com/jpillora/go-ogle-analytics"
 )
@@ -31,6 +33,9 @@ func Ga(ID string, program string, version string) *GaReporter {
 
 // Start notify program starts to your GA account.
 func (g *GaReporter) Start() error {
+	if strings.ToUpper(os.Getenv("CI")) == "TRUE" {
+		return nil // skip CI environments.
+	}
 	URL := fmt.Sprintf("http://%v/%v/%v/%v", "localhost", g.program, g.version, "start")
 	return g.client.Send(ga.NewPageview(URL))
 	// return g.client.Send(&myPV{url: URL})
@@ -39,6 +44,9 @@ func (g *GaReporter) Start() error {
 
 // Report notify panics to your GA account.
 func (g *GaReporter) Report(p *ParsedPanic) error {
+	if strings.ToUpper(os.Getenv("CI")) == "TRUE" {
+		return nil // skip CI environments.
+	}
 	URL := fmt.Sprintf("http://%v/%v/%v/%v", "localhost", g.program, g.version, "start")
 	return g.client.Send(ga.NewPageview(URL))
 	// return g.client.Send(&myPV{url: URL})
