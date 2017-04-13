@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/jpillora/go-ogle-analytics"
+	"github.com/mh-cbon/report-panic/ga"
 )
 
 // GaReporter is a reporter to reports starts and panics of your programs to your GA account.
@@ -18,7 +18,7 @@ type GaReporter struct {
 
 // Ga construct a GA reporter.
 func Ga(ID string, program string, version string) *GaReporter {
-	c, err := ga.NewClient(ID)
+	c, err := ga.NewClient("go-ga", ID)
 	if err != nil {
 		panic(err)
 	}
@@ -27,27 +27,31 @@ func Ga(ID string, program string, version string) *GaReporter {
 		version: version,
 		client:  c,
 	}
-	go ret.Start()
+	go func() {
+		// <-time.After(time.Second * 2)
+		ret.Start()
+	}()
 	return ret
 }
 
 // Start notify program starts to your GA account.
 func (g *GaReporter) Start() error {
-	if strings.ToUpper(os.Getenv("CI")) == "TRUE" {
-		return nil // skip CI environments.
+	if isCI() {
+		return nil
 	}
-	URL := fmt.Sprintf("http://%v/%v/%v/%v", "localhost", g.program, g.version, "start")
-	return g.client.Send(ga.NewPageview(URL))
-	// return g.client.Send(&myPV{url: URL})
-	// return g.client.Send(ga.NewEvent(g.Category, "start").Label(g.Label))
+	URL := fmt.Sprintf("%v/%v/%v", g.program, g.version, "start")
+	return g.client.PageView(URL)
 }
 
 // Report notify panics to your GA account.
 func (g *GaReporter) Report(p *ParsedPanic) error {
-	if strings.ToUpper(os.Getenv("CI")) == "TRUE" {
-		return nil // skip CI environments.
+	if isCI() {
+		return nil
 	}
-	URL := fmt.Sprintf("http://%v/%v/%v/%v", "localhost", g.program, g.version, "start")
-	return g.client.Send(ga.NewPageview(URL))
-	// return g.client.Send(&myPV{url: URL})
+	URL := fmt.Sprintf("%v/%v/%v", g.program, g.version, "panic")
+	return g.client.PageView(URL)
+}
+
+func isCI() bool {
+	return strings.ToUpper(os.Getenv("CI")) == "TRUE"
 }

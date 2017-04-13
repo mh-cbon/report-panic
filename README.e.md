@@ -4,15 +4,17 @@
 
 {{pkgdoc "index.go"}}
 
+# {{toc 5}}
+
 # API example
 
 ### Report to a github repository
 
-{{file "demo/gh_demo.go"}}
+{{cat "demo/gh_demo.go" | color "go"}}
 
 ### Report to a google analytics account
 
-{{file "demo/ga_demo.go"}}
+{{cat "demo/ga_demo.go" | color "go"}}
 
 # Install
 
@@ -99,6 +101,10 @@ func main() {
 gump patch -d # check
 gump patch # bump
 ```
+
+# History
+
+[CHANGELOG](CHANGELOG.md)
 
 # Credits
 

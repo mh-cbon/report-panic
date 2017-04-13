@@ -9,6 +9,20 @@
 Package reportpanic Automatically report your programs panic.
 
 
+# TOC
+- [API example](#api-example)
+  - [Report to a github repository](#report-to-a-github-repository)
+  - [Report to a google analytics account](#report-to-a-google-analytics-account)
+- [Install](#install)
+  - [Glide](#glide)
+- [Ga Configuration](#ga-configuration)
+- [Gh Configuration](#gh-configuration)
+  - [Change the github token reporter](#change-the-github-token-reporter)
+  - [Change the github template generating the body report](#change-the-github-template-generating-the-body-report)
+- [Recipes](#recipes)
+  - [Release the project](#release-the-project)
+- [Credits](#credits)
+
 # API example
 
 ### Report to a github repository
@@ -51,6 +65,7 @@ import (
 // provide it a reporter such as Gh
 
 func main() {
+	// Don t forget to change the GA ID.
 	reportpanic.HandleMain(reportpanic.Ga("UA-93911415-1", "my-program", "0.0.1"), func() {
 		panic("oh no!")
 	})
@@ -154,3 +169,4 @@ gump patch # bump
 # Credits
 
 [Mitchell Hashimoto](https://github.com/mitchellh) for the base code provided in [panicwrap](https://github.com/mitchellh/panicwrap)
+
